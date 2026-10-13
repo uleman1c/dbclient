@@ -21,14 +21,15 @@ func NewResult() *QueryResult {
 
 // ExecuteQuery выполняет SQL-запрос к базе данных.
 // Параметры:
-//   driverName - имя драйвера ("sqlite", "sqlserver", "postgres", "mysql")
-//   connStr    - строка подключения (формат зависит от СУБД)
-//   query      - текст SQL-запроса
-//     * SQLite: "?" или ":name"
-//     * MSSQL: "@p1", "@p2", ...
-//     * PostgreSQL: "$1", "$2", ...
-//     * MySQL: "?"
-//   params     - массив параметров для подстановки в запрос
+//
+//	driverName - имя драйвера ("sqlite", "sqlserver", "postgres", "mysql")
+//	connStr    - строка подключения (формат зависит от СУБД)
+//	query      - текст SQL-запроса
+//	  * SQLite: "?" или ":name"
+//	  * MSSQL: "@p1", "@p2", ...
+//	  * PostgreSQL: "$1", "$2", ...
+//	  * MySQL: "?"
+//	params     - массив параметров для подстановки в запрос
 func ExecuteQuery(driverName string, connStr string, query string, params []interface{}) (*QueryResult, error) {
 	db, err := sql.Open(driverName, connStr)
 	if err != nil {
